@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -8,8 +8,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="/src/styles/base.css">
+    <link rel="stylesheet" href="/src/styles/theme.css">
     <link rel="stylesheet" href="/src/styles/layout.css">
     <link rel="stylesheet" href="/src/styles/pages.css">
     <link rel="stylesheet" href="/src/styles/components.css">
@@ -47,6 +50,7 @@
         <header class="header">
             <div class="brand-section">
                 <img src="assets/logo_small.png" alt="Stalactite" class="mini-logo" data-i18n-attr="title.app:alt">
+                <span class="brand-title">LAUNCHER</span>
             </div>
 
             <nav class="nav-buttons">
@@ -60,14 +64,36 @@
             <div class="header-controls">
                 <div class="language-picker language-picker--compact" data-language-picker data-locale="fr">
                     <button class="language-picker-trigger" type="button" aria-label="Langue" aria-expanded="false">
-                        <span class="language-picker-value">FR</span><i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        <span class="language-picker-value">FR</span><i class="fas fa-chevron-down"
+                            aria-hidden="true"></i>
                     </button>
                     <div class="language-picker-menu" role="listbox" aria-label="Choisir la langue">
-                        <button type="button" role="option" data-language-option data-locale="fr" data-label="FR">FR</button>
-                        <button type="button" role="option" data-language-option data-locale="en" data-label="EN">EN</button>
-                        <button type="button" role="option" data-language-option data-locale="es" data-label="ES">ES</button>
+                        <button type="button" role="option" data-language-option data-locale="fr"
+                            data-label="FR">FR</button>
+                        <button type="button" role="option" data-language-option data-locale="en"
+                            data-label="EN">EN</button>
+                        <button type="button" role="option" data-language-option data-locale="es"
+                            data-label="ES">ES</button>
                     </div>
                 </div>
+                <button id="btn-theme" class="btn-theme" type="button" aria-label="Changer de thème"
+                    title="Thème clair / sombre">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-sun-medium-icon btn-theme-icon--light lucide-sun-medium"
+                        aria-hidden="true">
+                        <circle cx="12" cy="12" r="4" />
+                        <path d="M12 3v1" />
+                        <path d="M12 20v1" />
+                        <path d="M3 12h1" />
+                        <path d="M20 12h1" />
+                        <path d="m18.364 5.636-.707.707" />
+                        <path d="m6.343 17.657-.707.707" />
+                        <path d="m5.636 5.636.707.707" />
+                        <path d="m17.657 17.657.707.707" />
+                    </svg>
+                    <i class="fas fa-moon btn-theme-icon--dark" aria-hidden="true"></i>
+                </button>
                 <div class="window-controls">
                     <button id="btn-minimize" class="window-control window-control--minimize" type="button"
                         aria-label="Réduire" title="Réduire">
@@ -86,7 +112,9 @@
             <div class="page-content active" id="accueil">
                 <div class="grid-layout">
                     <aside class="col-left">
-                        <div class="panel-header"><p data-i18n="about.title">LE PROJET EN BREF</p></div>
+                        <div class="panel-header">
+                            <p data-i18n="about.title">LE PROJET EN BREF</p>
+                        </div>
                         <div class="panel-body scrollable-text">
                             <p data-i18n="about.description.p1">Stalactite est un fangame développé sous PSDK & Pokémon
                                 Studio. Univers semi-enneigé.</p>
@@ -146,7 +174,7 @@
 
                     <aside class="col-right">
                         <div class="panel-header">
-                             <p data-i18n-html="news.title">INFOS EN VRAC</p>
+                            <p data-i18n-html="news.title">INFOS EN VRAC</p>
                         </div>
                         <div class="news-list">
                             <div class="news-item">
@@ -172,7 +200,8 @@
                 <header class="page-hero">
                     <span class="page-kicker" data-i18n="updates.kicker">JOURNAL DES VERSIONS</span>
                     <h1 class="page-title" data-i18n="updates.title">MISES À JOUR</h1>
-                    <p class="page-intro" data-i18n="updates.intro">Retrouvez les dernières évolutions du launcher et du projet.</p>
+                    <p class="page-intro" data-i18n="updates.intro">Retrouvez les dernières évolutions du launcher et du
+                        projet.</p>
                 </header>
                 <div id="updates-error" class="error-msg" data-i18n="updates.offline_message" style="display:none;">
                     CONNECTION_LOST</div>
@@ -185,7 +214,8 @@
                 <header class="infos-hero">
                     <span class="infos-kicker" data-i18n="infos.kicker">DOSSIER PROJET</span>
                     <h1 class="infos-title" data-i18n="infos.title">INFORMATIONS</h1>
-                    <p class="infos-intro" data-i18n="infos.intro">Tout ce qu'il faut savoir sur Pokémon Stalactite, son état de développement et sa communauté.</p>
+                    <p class="infos-intro" data-i18n="infos.intro">Tout ce qu'il faut savoir sur Pokémon Stalactite, son
+                        état de développement et sa communauté.</p>
                 </header>
                 <div class="infos-layout">
                     <div class="infos-main-column">
@@ -212,12 +242,17 @@
                         <div class="infos-block">
                             <h2 class="infos-subheading" data-i18n="infos.progress_title">AVANCEMENT</h2>
                             <div class="progress-summary">
-                                <div class="progress-entry"><span data-i18n="infos.progress.world">Carte du monde</span><strong>75%</strong></div>
-                                <div class="progress-entry"><span data-i18n="infos.progress.story">Scénario principal</span><strong>40%</strong></div>
-                                <div class="progress-entry"><span data-i18n="infos.progress.pokedex">Pokédex régional</span><strong>60%</strong></div>
-                                <div class="progress-entry"><span data-i18n="infos.progress.audio">Musiques &amp; SFX</span><strong>50%</strong></div>
+                                <div class="progress-entry"><span data-i18n="infos.progress.world">Carte du
+                                        monde</span><strong>75%</strong></div>
+                                <div class="progress-entry"><span data-i18n="infos.progress.story">Scénario
+                                        principal</span><strong>40%</strong></div>
+                                <div class="progress-entry"><span data-i18n="infos.progress.pokedex">Pokédex
+                                        régional</span><strong>60%</strong></div>
+                                <div class="progress-entry"><span data-i18n="infos.progress.audio">Musiques &amp;
+                                        SFX</span><strong>50%</strong></div>
                             </div>
-                            <p class="section-note" data-i18n="infos.progress_note">Estimations mises à jour en août 2026.</p>
+                            <p class="section-note" data-i18n="infos.progress_note">Estimations mises à jour en août
+                                2026.</p>
                         </div>
                     </div>
 
@@ -225,7 +260,9 @@
                         <div class="infos-block">
                             <span class="project-phase" data-i18n="infos.phase">ALPHA PRIVÉE</span>
                             <h2 class="infos-subheading" data-i18n="infos.state.title">ÉTAT DU PROJET</h2>
-                            <p class="infos-text" data-i18n-html="infos.state.description">Le jeu est actuellement en <strong>phase Alpha</strong>. Des bugs, crashes ou déséquilibres peuvent survenir.</p>
+                            <p class="infos-text" data-i18n-html="infos.state.description">Le jeu est actuellement en
+                                <strong>phase Alpha</strong>. Des bugs, crashes ou déséquilibres peuvent survenir.
+                            </p>
                             <div class="stat-list">
                                 <div class="stat-row">
                                     <span data-i18n="infos.labels.engine">ENGINE</span>
@@ -290,19 +327,25 @@
                 <header class="page-hero">
                     <span class="page-kicker" data-i18n="settings.kicker">PRÉFÉRENCES</span>
                     <h1 class="page-title" data-i18n="settings.title">RÉGLAGES</h1>
-                    <p class="page-intro" data-i18n="settings.intro">Personnalisez l’affichage et la langue du launcher.</p>
+                    <p class="page-intro" data-i18n="settings.intro">Personnalisez l’affichage et la langue du launcher.
+                    </p>
                 </header>
                 <div class="settings-list">
                     <div class="setting-row">
                         <label data-i18n="settings.language.label">LANGUAGE_SELECT</label>
                         <div class="language-picker language-picker--full" data-language-picker data-locale="fr">
-                            <button class="language-picker-trigger" type="button" aria-label="Choisir la langue" aria-expanded="false">
-                                <span class="language-picker-value">FRANÇAIS</span><i class="fas fa-chevron-down" aria-hidden="true"></i>
+                            <button class="language-picker-trigger" type="button" aria-label="Choisir la langue"
+                                aria-expanded="false">
+                                <span class="language-picker-value">FRANÇAIS</span><i class="fas fa-chevron-down"
+                                    aria-hidden="true"></i>
                             </button>
                             <div class="language-picker-menu" role="listbox" aria-label="Choisir la langue">
-                                <button type="button" role="option" data-language-option data-locale="fr" data-label="FRANÇAIS">FRANÇAIS</button>
-                                <button type="button" role="option" data-language-option data-locale="en" data-label="ENGLISH">ENGLISH</button>
-                                <button type="button" role="option" data-language-option data-locale="es" data-label="ESPAÑOL">ESPAÑOL</button>
+                                <button type="button" role="option" data-language-option data-locale="fr"
+                                    data-label="FRANÇAIS">FRANÇAIS</button>
+                                <button type="button" role="option" data-language-option data-locale="en"
+                                    data-label="ENGLISH">ENGLISH</button>
+                                <button type="button" role="option" data-language-option data-locale="es"
+                                    data-label="ESPAÑOL">ESPAÑOL</button>
                             </div>
                         </div>
                     </div>
@@ -321,8 +364,10 @@
                     </div>
                     <div class="setting-row">
                         <div class="setting-label">
-                            <label data-i18n="settings.reduced_motion.label" for="reduced-motion-toggle">Animations réduites</label>
-                            <div class="small-mono muted" data-i18n="settings.reduced_motion.description">Réduire les animations et masquer la neige.</div>
+                            <label data-i18n="settings.reduced_motion.label" for="reduced-motion-toggle">Animations
+                                réduites</label>
+                            <div class="small-mono muted" data-i18n="settings.reduced_motion.description">Réduire les
+                                animations et masquer la neige.</div>
                         </div>
                         <label class="snow-control" for="reduced-motion-toggle">
                             <span id="reduced-motion-status" class="snow-control-status" aria-live="polite"></span>
@@ -338,7 +383,8 @@
                 <header class="page-hero">
                     <span class="page-kicker" data-i18n="credits.kicker">ÉQUIPE DU PROJET</span>
                     <h1 class="page-title" data-i18n="credits.title">CRÉDITS</h1>
-                    <p class="page-intro" data-i18n="credits.intro">Les personnes qui donnent vie à Pokémon Stalactite.</p>
+                    <p class="page-intro" data-i18n="credits.intro">Les personnes qui donnent vie à Pokémon Stalactite.
+                    </p>
                 </header>
 
                 <!-- LEAD -->
@@ -381,9 +427,12 @@
 
         <footer class="footer">
             <div class="server-status">
-                <i class="fas fa-users" style="color: rgb(0, 193, 0);"></i>
+                <i class="fas fa-circle" style="color: #00c100; font-size: 8px;"></i>
+
                 <div class="webview-crop">
-                    <iframe id="counter-view" src="https://online-players-launcher-stalactite.netlify.app" title="Online players" loading="lazy"></iframe>
+                    <iframe id="counter-view" src="https://online-players-launcher-stalactite.netlify.app"
+                        title="Online players" loading="lazy">
+                    </iframe>
                 </div>
             </div>
             <div class="launcher-ver" id="launcher-ver">v—</div>

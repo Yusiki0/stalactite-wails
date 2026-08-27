@@ -5,7 +5,7 @@ import { initWindowControls } from './components/window.js';
 import { initLauncherBanner } from './components/banner.js';
 import { initHome } from './pages/home.js';
 import { initPatchnotes } from './pages/patchnotes.js';
-import { initSettings } from './pages/settings.js';
+import { initTheme, initSettings } from './pages/settings.js';
 import { initCredits } from './pages/credits.js';
 
 // Fonction pour synchroniser le texte du bouton avec le CSS
@@ -21,6 +21,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   await window.i18n.setLocale(localStorage.getItem('locale') || 'fr');
   
   const refreshPatchnotes = initPatchnotes();
+  initTheme();
   initNavigation({ onPageOpen: target => {
     if (target === 'updates') refreshPatchnotes?.();
   } });

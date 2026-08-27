@@ -11,51 +11,75 @@
     src: url('../../assets/Uni Sans Heavy.otf') format('opentype');
 }
 
+/* ─────────────────────────────────────────────────────────
+   DESIGN TOKENS — DARK THEME (default)
+   ───────────────────────────────────────────────────────── */
 :root {
-    /* ─── Palette Frost UI ─── */
-    --bg:       #0a0e14;
-    --bg2:      #111820;
-    --surface:  #16202b;
-    --surface2: #1e2a38;
-    --border:   rgba(100, 160, 220, 0.10);
+    /* Backgrounds */
+    --bg:       #090c12;
+    --bg2:      #0e1219;
+    --surface:  #131920;
+    --surface2: #1a2230;
+    --surface3: #1f2a3a;
 
-    --accent:      #6ec8f5;
-    --accent-dark: #3a8dd4;
-    --accent-glow: rgba(110, 200, 245, 0.15);
+    /* Borders */
+    --border:       rgba(180, 210, 255, 0.07);
+    --border-mid:   rgba(180, 210, 255, 0.12);
+    --border-hi:    rgba(180, 210, 255, 0.22);
 
-    --action:      #6ec8f5;
-    --action-dark: #3a8dd4;
-    --action-text: #0a0e14;
+    /* Accent — givré, lumineux, plus distinctif que le bleu SaaS standard */
+    --accent:       #c8dff8;
+    --accent-dim:   #7aabdf;
+    --accent-dark:  #3a6ea8;
+    --accent-glow:  rgba(200, 223, 248, 0.12);
+    --accent-tint:  rgba(200, 223, 248, 0.06);
 
-    --text:       #dce4ed;
-    --text-dim:   #7a8a9e;
-    --text-muted: #56677c;
+    /* Action button (joue / installe) */
+    --action:      #c8dff8;
+    --action-dark: #5a90c8;
+    --action-text: #080b10;
 
-    --alert: #f06060;
+    /* Texts */
+    --text:       #e8edf5;
+    --text-dim:   #8898ae;
+    --text-muted: #4d5f72;
 
+    /* State */
+    --alert:   #e05858;
+    --success: #4cc98a;
+
+    /* Fonts */
+    --font-serif:  'DM Serif Display', Georgia, serif;
     --font-ui:     'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-heavy:  'Uni Sans Heavy', sans-serif;
     --font-italic: 'Uni Sans Heavy Italic', sans-serif;
     --font-thin:   'Uni Sans Thin Italic', sans-serif;
 
-    /* ─── Radius System ─── */
-    --r-sm:  6px;
+    /* Radius */
+    --r-xs:  3px;
+    --r-sm:  5px;
     --r-md:  8px;
     --r-lg:  12px;
     --r-xl:  16px;
-    --r-btn: 8px;
+    --r-btn: 6px;
 
-    /* ─── Shadows ─── */
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
-    --shadow-md: 0 4px 16px rgba(0,0,0,0.35), 0 2px 6px rgba(0,0,0,0.2);
-    --shadow-lg: 0 12px 40px rgba(0,0,0,0.45), 0 4px 12px rgba(0,0,0,0.25);
+    /* Shadows */
+    --shadow-sm:  0 1px 3px rgba(0,0,0,0.5), 0 1px 2px rgba(0,0,0,0.3);
+    --shadow-md:  0 4px 16px rgba(0,0,0,0.55), 0 2px 6px rgba(0,0,0,0.3);
+    --shadow-lg:  0 12px 40px rgba(0,0,0,0.65), 0 4px 12px rgba(0,0,0,0.35);
+    --shadow-glow: 0 0 24px rgba(200, 223, 248, 0.06);
 
-    /* ─── Transitions ─── */
-    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    /* Transitions */
+    --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
     --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
-    --duration: 0.25s;
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --duration:    0.22s;
+    --duration-slow: 0.35s;
 }
 
+/* ─────────────────────────────────────────────────────────
+   RESET & BASE
+   ───────────────────────────────────────────────────────── */
 * {
     margin: 0;
     padding: 0;
@@ -65,8 +89,16 @@
     user-select: none;
 }
 
-button, select, input[type="checkbox"], a, .window-control, .window-controls i {
+button, select, input[type="checkbox"], a,
+.window-control, .window-controls i {
     cursor: pointer;
+}
+
+html {
+    /* Transitions fluides sur tout le document lors du changement de thème */
+    transition:
+        background-color var(--duration-slow) var(--ease-smooth),
+        color var(--duration-slow) var(--ease-smooth);
 }
 
 body {
@@ -76,21 +108,24 @@ body {
     justify-content: stretch;
     align-items: stretch;
     overflow: hidden;
-    background: #060a10;
+    background: var(--bg);
     color: var(--text);
     font-family: var(--font-ui);
     font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
 /* ─── Scrollbar ─── */
-::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar { width: 2px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-    background: rgba(110, 200, 245, 0.15);
+    background: var(--border-mid);
     border-radius: 99px;
+    transition: background var(--duration) var(--ease-smooth);
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba(110, 200, 245, 0.3);
+    background: var(--accent-dim);
 }

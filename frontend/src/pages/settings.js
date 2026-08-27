@@ -1,3 +1,23 @@
+/* ─── Theme toggle ─────────────────────────────────────── */
+export function initTheme() {
+  const html = document.documentElement;
+  const btn = document.getElementById('btn-theme');
+  if (!btn) return;
+
+  const saved = localStorage.getItem('theme');
+  // Applique le thème sauvegardé (sinon 'dark' par défaut via l'attribut HTML)
+  if (saved === 'light' || saved === 'dark') {
+    html.dataset.theme = saved;
+  }
+
+  btn.addEventListener('click', () => {
+    const next = html.dataset.theme === 'light' ? 'dark' : 'light';
+    html.dataset.theme = next;
+    localStorage.setItem('theme', next);
+  });
+}
+
+/* ─── Snow / Motion settings ────────────────────────────── */
 export function initSettings() {
   const snowToggle = document.getElementById('snow-toggle');
   const snowStatus = document.getElementById('snow-toggle-status');
