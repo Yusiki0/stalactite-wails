@@ -1,0 +1,96 @@
+@font-face {
+    font-family: 'Uni Sans Heavy Italic';
+    src: url('../../assets/Uni Sans Heavy Italic.otf') format('opentype');
+}
+@font-face {
+    font-family: 'Uni Sans Thin Italic';
+    src: url('../../assets/Uni Sans Thin Italic.otf') format('opentype');
+}
+@font-face {
+    font-family: 'Uni Sans Heavy';
+    src: url('../../assets/Uni Sans Heavy.otf') format('opentype');
+}
+
+:root {
+    /* ─── Palette Frost UI ─── */
+    --bg:       #0a0e14;
+    --bg2:      #111820;
+    --surface:  #16202b;
+    --surface2: #1e2a38;
+    --border:   rgba(100, 160, 220, 0.10);
+
+    --accent:      #6ec8f5;
+    --accent-dark: #3a8dd4;
+    --accent-glow: rgba(110, 200, 245, 0.15);
+
+    --action:      #6ec8f5;
+    --action-dark: #3a8dd4;
+    --action-text: #0a0e14;
+
+    --text:       #dce4ed;
+    --text-dim:   #7a8a9e;
+    --text-muted: #56677c;
+
+    --alert: #f06060;
+
+    --font-ui:     'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-heavy:  'Uni Sans Heavy', sans-serif;
+    --font-italic: 'Uni Sans Heavy Italic', sans-serif;
+    --font-thin:   'Uni Sans Thin Italic', sans-serif;
+
+    /* ─── Radius System ─── */
+    --r-sm:  6px;
+    --r-md:  8px;
+    --r-lg:  12px;
+    --r-xl:  16px;
+    --r-btn: 8px;
+
+    /* ─── Shadows ─── */
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.35), 0 2px 6px rgba(0,0,0,0.2);
+    --shadow-lg: 0 12px 40px rgba(0,0,0,0.45), 0 4px 12px rgba(0,0,0,0.25);
+
+    /* ─── Transitions ─── */
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --duration: 0.25s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    cursor: default;
+    user-select: none;
+}
+
+button, select, input[type="checkbox"], a, .window-control, .window-controls i {
+    cursor: pointer;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+    overflow: hidden;
+    background: #060a10;
+    color: var(--text);
+    font-family: var(--font-ui);
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+    background: rgba(110, 200, 245, 0.15);
+    border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(110, 200, 245, 0.3);
+}

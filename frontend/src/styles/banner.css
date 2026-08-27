@@ -1,0 +1,18 @@
+/* Launcher self-update banner */
+#launcher-update-banner {
+    display:none; position:fixed; top:0; left:0; right:0; z-index:9999;
+    background:rgba(10,14,20,.92); backdrop-filter:blur(16px);
+    border-bottom:1px solid rgba(110,200,245,.12); padding:0 18px; height:42px;
+    align-items:center; justify-content:space-between; gap:12px; font-family:var(--font-ui);
+    font-size:12px; letter-spacing:.08em; animation:slideDown .35s cubic-bezier(.16,1,.3,1);
+}
+#launcher-update-banner.visible{display:flex}
+@keyframes slideDown{from{transform:translateY(-100%);opacity:0}to{transform:translateY(0);opacity:1}}
+.banner-left{display:flex;align-items:center;gap:10px;color:var(--text-dim);flex:1;min-width:0}
+.banner-icon{color:var(--accent);font-size:14px;flex-shrink:0}.banner-text{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.banner-version{color:var(--accent);font-weight:700}.banner-progress-wrap{display:none;align-items:center;gap:8px;flex-shrink:0}.banner-progress-wrap.visible{display:flex}
+.banner-prog-track{width:120px;height:3px;background:rgba(30,42,56,.8);border-radius:99px;overflow:hidden}.banner-prog-bar{height:100%;width:0;background:linear-gradient(90deg,var(--accent-dark),var(--accent));border-radius:99px;transition:width .3s cubic-bezier(.4,0,.2,1)}
+.banner-prog-label{color:var(--text-muted);font-size:11px;min-width:60px;text-align:right}.banner-actions{display:flex;gap:8px;flex-shrink:0}
+.banner-btn{padding:4px 14px;border-radius:var(--r-btn);border:1px solid var(--border);background:var(--surface);color:var(--text-dim);font-family:var(--font-ui);font-size:11px;letter-spacing:.06em;cursor:pointer;transition:all .25s cubic-bezier(.4,0,.2,1);white-space:nowrap}
+.banner-btn:hover{border-color:rgba(110,200,245,.3);color:var(--accent)}.banner-btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-dark));border-color:transparent;color:var(--bg);font-weight:700}.banner-btn:disabled{opacity:.4;pointer-events:none}
+body.banner-open .launcher-frame{margin-top:42px}

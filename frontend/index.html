@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STALACTITE | LAUNCHER</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles/base.css">
+    <link rel="stylesheet" href="/src/styles/layout.css">
+    <link rel="stylesheet" href="/src/styles/pages.css">
+    <link rel="stylesheet" href="/src/styles/components.css">
+    <link rel="stylesheet" href="/src/styles/banner.css">
+
+</head>
+
+<body>
+
+    <div id="snow-container"></div>
+
+    <div class="launcher-frame">
+
+        <!-- ===== BANNIÈRE AUTO-UPDATER LAUNCHER ===== -->
+        <div id="launcher-update-banner">
+            <div class="banner-left">
+                <i class="fas fa-arrow-circle-up banner-icon"></i>
+                <span class="banner-text" id="banner-text">
+                    MISE À JOUR DISPONIBLE — LAUNCHER <span class="banner-version" id="banner-version"></span>
+                </span>
+            </div>
+            <div class="banner-progress-wrap" id="banner-progress-wrap">
+                <div class="banner-prog-track">
+                    <div class="banner-prog-bar" id="banner-prog-bar"></div>
+                </div>
+                <span class="banner-prog-label" id="banner-prog-label">0%</span>
+            </div>
+            <div class="banner-actions" id="banner-actions">
+                <button class="banner-btn primary" id="banner-btn-update">↓ METTRE À JOUR</button>
+                <button class="banner-btn" id="banner-btn-dismiss">✕</button>
+            </div>
+        </div>
+
+
+        <header class="header">
+            <div class="brand-section">
+                <img src="assets/logo_small.png" alt="Stalactite" class="mini-logo" data-i18n-attr="title.app:alt">
+            </div>
+
+            <nav class="nav-buttons">
+                <button class="nav-btn active" data-route="accueil" data-i18n="nav.home">[ACCUEIL]</button>
+                <button class="nav-btn" data-route="updates" data-i18n="nav.updates">[LOGS]</button>
+                <button class="nav-btn" data-route="infos" data-i18n="nav.infos">[INFOS]</button>
+                <button class="nav-btn" data-route="settings" data-i18n="nav.settings">[CONFIG]</button>
+                <button class="nav-btn" data-route="credits" data-i18n="nav.credits">[CREDITS]</button>
+            </nav>
+
+            <div class="header-controls">
+                <div class="language-picker language-picker--compact" data-language-picker data-locale="fr">
+                    <button class="language-picker-trigger" type="button" aria-label="Langue" aria-expanded="false">
+                        <span class="language-picker-value">FR</span><i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                    <div class="language-picker-menu" role="listbox" aria-label="Choisir la langue">
+                        <button type="button" role="option" data-language-option data-locale="fr" data-label="FR">FR</button>
+                        <button type="button" role="option" data-language-option data-locale="en" data-label="EN">EN</button>
+                        <button type="button" role="option" data-language-option data-locale="es" data-label="ES">ES</button>
+                    </div>
+                </div>
+                <div class="window-controls">
+                    <button id="btn-minimize" class="window-control window-control--minimize" type="button"
+                        aria-label="Réduire" title="Réduire">
+                        <i class="fas fa-minus" aria-hidden="true"></i>
+                    </button>
+                    <button id="btn-close" class="window-control window-control--close" type="button"
+                        aria-label="Fermer" title="Fermer">
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-viewport">
+
+            <div class="page-content active" id="accueil">
+                <div class="grid-layout">
+                    <aside class="col-left">
+                        <div class="panel-header"><p data-i18n="about.title">LE PROJET EN BREF</p></div>
+                        <div class="panel-body scrollable-text">
+                            <p data-i18n="about.description.p1">Stalactite est un fangame développé sous PSDK & Pokémon
+                                Studio. Univers semi-enneigé.</p>
+                            <br>
+                            <p data-i18n="about.description.p2">Version ALPHA. Instabilité possible.</p>
+                            <p class="legal small-mono" data-i18n="about.legal">Projet non commercial. Non affilié à
+                                Nintendo.</p>
+                        </div>
+                    </aside>
+
+                    <section class="col-center">
+                        <div class="hero-frame">
+                            <img src="assets/Stalac_banner.png" alt="Background" class="hero-bg" draggable="false">
+                            <div class="scanlines"></div>
+                        </div>
+
+                        <div class="action-area">
+                            <div id="progress-container" style="display: none;">
+                                <div class="prog-label">
+                                    <span id="prog-status">INSTALLING...</span>
+                                    <span id="prog-speed" class="prog-speed"></span>
+                                </div>
+                                <div class="prog-track">
+                                    <div id="progress-bar"></div>
+                                </div>
+                                <div class="prog-details">
+                                    <span id="prog-bytes"></span>
+                                    <span id="prog-eta"></span>
+                                </div>
+                            </div>
+
+                            <div class="play-wrapper">
+                                <div class="play-group">
+                                    <button class="btn-play" data-i18n="action.install">INITIALISER</button>
+                                    <div class="burger-wrap">
+                                        <button class="btn-burger" id="btn-burger" aria-label="Options">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <div class="burger-menu" id="burger-menu">
+                                            <button class="burger-item" id="btn-open-folder">
+                                                <i class="fas fa-folder-open"></i>
+                                                <span data-i18n="action.open_folder">Ouvrir le dossier</span>
+                                            </button>
+                                            <button class="burger-item burger-item--danger" id="btn-uninstall">
+                                                <i class="fas fa-trash"></i>
+                                                <span data-i18n="action.uninstall">Désinstaller</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="version-tag">
+                                    <span data-i18n="version.current">CHECKING VERSION...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <aside class="col-right">
+                        <div class="panel-header">
+                             <p data-i18n-html="news.title">INFOS EN VRAC</p>
+                        </div>
+                        <div class="news-list">
+                            <div class="news-item">
+                                <h3 data-i18n="news.alpha_title">ALPHA TEST</h3>
+                                <p data-i18n-html="news.alpha_text">Version privée. Ne pas distribuer.</p>
+                            </div>
+                            <div class="news-item">
+                                <h3 data-i18n="news.screenshot_title">PARTAGER</h3>
+                                <p data-i18n-html="news.screenshot_text">Partagez vos images dans <span
+                                        class="channel-tag">#media-only</span>.</p>
+                            </div>
+                            <div class="news-item">
+                                <h3 data-i18n="news.bugs_title">SIGNALER UN BUG</h3>
+                                <p data-i18n-html="news.bugs_text">Signalez les erreurs dans <span
+                                        class="channel-tag">#report-bug</span>.</p>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+
+            <section id="updates" class="page-content single-col page-updates">
+                <header class="page-hero">
+                    <span class="page-kicker" data-i18n="updates.kicker">JOURNAL DES VERSIONS</span>
+                    <h1 class="page-title" data-i18n="updates.title">MISES À JOUR</h1>
+                    <p class="page-intro" data-i18n="updates.intro">Retrouvez les dernières évolutions du launcher et du projet.</p>
+                </header>
+                <div id="updates-error" class="error-msg" data-i18n="updates.offline_message" style="display:none;">
+                    CONNECTION_LOST</div>
+                <div id="updates-list" class="raw-list">
+                    <div class="loading-txt" data-i18n="updates.loading">FETCHING DATA</div>
+                </div>
+            </section>
+
+            <section id="infos" class="page-content single-col">
+                <header class="infos-hero">
+                    <span class="infos-kicker" data-i18n="infos.kicker">DOSSIER PROJET</span>
+                    <h1 class="infos-title" data-i18n="infos.title">INFORMATIONS</h1>
+                    <p class="infos-intro" data-i18n="infos.intro">Tout ce qu'il faut savoir sur Pokémon Stalactite, son état de développement et sa communauté.</p>
+                </header>
+                <div class="infos-layout">
+                    <div class="infos-main-column">
+                        <div class="infos-block">
+                            <h2 class="infos-subheading" data-i18n="infos.game_title">LE JEU</h2>
+                            <p class="infos-text" data-i18n-html="infos.description.p">Fangame développé bénévolement
+                                avec PSDK.</p>
+                            <div class="feature-list">
+                                <div class="feature-item">
+                                    <span data-i18n="infos.features.items.1">Région inédite semi-enneigée</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span data-i18n="infos.features.items.2">Scénario original mature</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span data-i18n="infos.features.items.3">Pokémon régionaux exclusifs</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span data-i18n="infos.features.items.4">Difficulté progressive</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="infos-block">
+                            <h2 class="infos-subheading" data-i18n="infos.progress_title">AVANCEMENT</h2>
+                            <div class="progress-summary">
+                                <div class="progress-entry"><span data-i18n="infos.progress.world">Carte du monde</span><strong>75%</strong></div>
+                                <div class="progress-entry"><span data-i18n="infos.progress.story">Scénario principal</span><strong>40%</strong></div>
+                                <div class="progress-entry"><span data-i18n="infos.progress.pokedex">Pokédex régional</span><strong>60%</strong></div>
+                                <div class="progress-entry"><span data-i18n="infos.progress.audio">Musiques &amp; SFX</span><strong>50%</strong></div>
+                            </div>
+                            <p class="section-note" data-i18n="infos.progress_note">Estimations mises à jour en août 2026.</p>
+                        </div>
+                    </div>
+
+                    <aside class="infos-aside">
+                        <div class="infos-block">
+                            <span class="project-phase" data-i18n="infos.phase">ALPHA PRIVÉE</span>
+                            <h2 class="infos-subheading" data-i18n="infos.state.title">ÉTAT DU PROJET</h2>
+                            <p class="infos-text" data-i18n-html="infos.state.description">Le jeu est actuellement en <strong>phase Alpha</strong>. Des bugs, crashes ou déséquilibres peuvent survenir.</p>
+                            <div class="stat-list">
+                                <div class="stat-row">
+                                    <span data-i18n="infos.labels.engine">ENGINE</span>
+                                    <span class="val">PSDK</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span data-i18n="infos.labels.tool">OUTIL</span>
+                                    <span class="val">Pokémon Studio</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span data-i18n="infos.labels.author">AUTEUR</span>
+                                    <span class="val">Yusiki</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span data-i18n="infos.labels.license">LICENCE</span>
+                                    <span class="val">Non commercial</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="infos-block">
+                            <h2 class="infos-subheading" data-i18n="infos.links_title">LIENS UTILES</h2>
+                            <div class="info-links-list">
+                                <a class="info-link-row" href="https://pokemon-stalactite.fr" data-external
+                                    rel="noopener">
+                                    <i class="fas fa-globe"></i>
+                                    <div>
+                                        <div class="info-link-title" data-i18n="infos.links.website">Site officiel</div>
+                                        <div class="info-link-sub">pokemon-stalactite.fr</div>
+                                    </div>
+                                    <i class="fas fa-external-link-alt info-link-arrow"></i>
+                                </a>
+                                <a class="info-link-row" href="https://discord.com/invite/44uvRcuSuq" data-external
+                                    rel="noopener">
+                                    <i class="fab fa-discord"></i>
+                                    <div>
+                                        <div class="info-link-title" data-i18n="infos.links.discord">Serveur Discord
+                                        </div>
+                                        <div class="info-link-sub" data-i18n="infos.links.discord_sub">Rejoindre la
+                                            communauté</div>
+                                    </div>
+                                    <i class="fas fa-external-link-alt info-link-arrow"></i>
+                                </a>
+                                <a class="info-link-row" href="https://pokemon-stalactite.fr/credits" data-external
+                                    rel="noopener">
+                                    <i class="fas fa-users"></i>
+                                    <div>
+                                        <div class="info-link-title" data-i18n="infos.links.credits">Crédits complets
+                                        </div>
+                                        <div class="info-link-sub" data-i18n="infos.links.credits_sub">Voir tous les
+                                            contributeurs</div>
+                                    </div>
+                                    <i class="fas fa-external-link-alt info-link-arrow"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+
+            <section id="settings" class="page-content single-col page-settings">
+                <header class="page-hero">
+                    <span class="page-kicker" data-i18n="settings.kicker">PRÉFÉRENCES</span>
+                    <h1 class="page-title" data-i18n="settings.title">RÉGLAGES</h1>
+                    <p class="page-intro" data-i18n="settings.intro">Personnalisez l’affichage et la langue du launcher.</p>
+                </header>
+                <div class="settings-list">
+                    <div class="setting-row">
+                        <label data-i18n="settings.language.label">LANGUAGE_SELECT</label>
+                        <div class="language-picker language-picker--full" data-language-picker data-locale="fr">
+                            <button class="language-picker-trigger" type="button" aria-label="Choisir la langue" aria-expanded="false">
+                                <span class="language-picker-value">FRANÇAIS</span><i class="fas fa-chevron-down" aria-hidden="true"></i>
+                            </button>
+                            <div class="language-picker-menu" role="listbox" aria-label="Choisir la langue">
+                                <button type="button" role="option" data-language-option data-locale="fr" data-label="FRANÇAIS">FRANÇAIS</button>
+                                <button type="button" role="option" data-language-option data-locale="en" data-label="ENGLISH">ENGLISH</button>
+                                <button type="button" role="option" data-language-option data-locale="es" data-label="ESPAÑOL">ESPAÑOL</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="setting-row">
+                        <div class="setting-label">
+                            <label data-i18n="settings.snow.label" for="snow-toggle">Effet neige</label>
+                            <div class="small-mono muted" data-i18n="settings.snow.description">Activer les particules
+                            </div>
+                        </div>
+                        <label class="snow-control" for="snow-toggle">
+                            <span id="snow-toggle-status" class="snow-control-status" aria-live="polite"></span>
+                            <input type="checkbox" id="snow-toggle" class="raw-checkbox" role="switch" />
+                            <span class="snow-switch" aria-hidden="true"></span>
+                        </label>
+                    </div>
+                    <div class="setting-row">
+                        <div class="setting-label">
+                            <label data-i18n="settings.reduced_motion.label" for="reduced-motion-toggle">Animations réduites</label>
+                            <div class="small-mono muted" data-i18n="settings.reduced_motion.description">Réduire les animations et masquer la neige.</div>
+                        </div>
+                        <label class="snow-control" for="reduced-motion-toggle">
+                            <span id="reduced-motion-status" class="snow-control-status" aria-live="polite"></span>
+                            <input type="checkbox" id="reduced-motion-toggle" class="raw-checkbox" role="switch" />
+                            <span class="snow-switch" aria-hidden="true"></span>
+                        </label>
+                    </div>
+                </div>
+                <p class="legal blink" data-i18n="settings.restart_notice">>> REBOOT REQUIRED FOR SOME CHANGES</p>
+            </section>
+
+            <section id="credits" class="page-content single-col credits-page">
+                <header class="page-hero">
+                    <span class="page-kicker" data-i18n="credits.kicker">ÉQUIPE DU PROJET</span>
+                    <h1 class="page-title" data-i18n="credits.title">CRÉDITS</h1>
+                    <p class="page-intro" data-i18n="credits.intro">Les personnes qui donnent vie à Pokémon Stalactite.</p>
+                </header>
+
+                <!-- LEAD -->
+                <div class="credits-lead-row">
+                    <div class="credits-lead-avatar-wrap">
+                        <img src="https://yt3.ggpht.com/GRnmerL8d4jK2FLdQpEi4QD68q82-zLzbIYG7kqJSdQjNLMxzWyZLhEkwYkgezShlGMqUA96=s600-c-k-c0x00ffffff-no-rj-rp-mo"
+                            class="credits-avatar-img" alt="Yusiki"
+                            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                        <div class="credits-avatar-fallback" style="display:none;">Y</div>
+                    </div>
+                    <div class="credits-lead-text">
+                        <span class="credits-lead-name">Yusiki</span>
+                        <span class="credits-lead-role">Lead Developer · Game Designer · Project Owner</span>
+                    </div>
+                </div>
+
+                <!-- SÉPARATEUR -->
+                <div class="credits-divider">
+                    <span data-i18n="credits.contributors.title">Contributors &amp; Supporters</span>
+                </div>
+
+                <!-- GRILLE CONTRIBUTEURS -->
+                <div class="credits-grid-people" id="credits-tags-container">
+                    <!-- Généré par JS -->
+                </div>
+
+                <!-- BAS DE PAGE CRÉDITS -->
+                <div class="credits-footer-row">
+                    <span class="credits-thanks-txt" data-i18n="credits.thanks.text">Thanks to everyone who participated
+                        in the project!</span>
+                    <a class="credits-site-link" href="https://pokemon-stalactite.fr/credits" data-external>
+                        <span data-i18n="credits.full.title">Full credits</span>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+
+            </section>
+
+        </div>
+
+        <footer class="footer">
+            <div class="server-status">
+                <i class="fas fa-users" style="color: rgb(0, 193, 0);"></i>
+                <div class="webview-crop">
+                    <iframe id="counter-view" src="https://online-players-launcher-stalactite.netlify.app" title="Online players" loading="lazy"></iframe>
+                </div>
+            </div>
+            <div class="launcher-ver" id="launcher-ver">v—</div>
+            <div class="social-links">
+                <a href="https://discord.com/invite/44uvRcuSuq" target="_blank"><i class="fab fa-discord"></i> <span
+                        data-i18n="footer.discord">DISCORD</span></a>
+                <a href="https://pokemon-stalactite.fr" target="_blank"><i class="fas fa-globe"></i> <span
+                        data-i18n="footer.website">NET</span></a>
+            </div>
+        </footer>
+    </div>
+
+
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

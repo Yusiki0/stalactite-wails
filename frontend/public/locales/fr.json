@@ -1,0 +1,200 @@
+{
+  "title": {
+    "app": "Launcher Pokémon Stalactite"
+  },
+  "logo": {
+    "subtitle": "Stalactite"
+  },
+  "nav": {
+    "home": "Accueil",
+    "updates": "Patch Notes",
+    "infos": "Informations",
+    "settings": "Paramètres",
+    "credits": "Crédits"
+  },
+  "about": {
+    "title": "LE PROJET EN BREF",
+    "description": {
+      "p1": "Pokémon Stalactite est un fangame francophone développé à l'aide de PSDK & Pokémon Studio, conçu pour offrir aux passionnés de la licence une expérience inédite et immersive dans un univers semi-enneigé.",
+      "p2": "Ce projet est actuellement en cours de développement, certaines erreurs peuvent apparaître..."
+    },
+    "legal": "Pokémon Stalactite est un projet non commercial et non affilié à Nintendo, Game Freak ou The Pokémon Company."
+  },
+  "hero": {
+    "alt": "Paysage Glacé"
+  },
+  "action": {
+    "install": "INSTALLER",
+    "play": "Jouer",
+    "update": "METTRE À JOUR",
+    "preparing": "PRÉPARATION...",
+    "launching": "LANCEMENT...",
+    "retry": "RÉESSAYER",
+    "open_folder": "Ouvrir le dossier",
+    "uninstall": "Désinstaller",
+    "offline": "HORS LIGNE"
+  },
+  "version": {
+    "current": "Version 0.5.2 - Alpha",
+    "newAvailable": "Nouveau : Version {{version}} disponible",
+    "updateAvailable": "Mise à jour {{version}} disponible !",
+    "local": "Version {{version}} - {{status}}",
+    "install_success": "Installation réussie !",
+    "server_error": "Erreur de connexion au serveur. Veuillez vérifier votre connexion internet."
+  },
+  "footer": {
+    "discord": "Discord",
+    "website": "Site Web"
+  },
+  "status": {
+    "online": "En ligne",
+    "offline": "HORS LIGNE",
+    "downloading": "Téléchargement {{percent}}%",
+    "extracting": "Extraction en cours...",
+    "speed": "{{speed}} · {{eta}} restant",
+    "checking": "Vérification...",
+    "install_ok": "Installation réussie !",
+    "update_ok": "Mise à jour réussie !",
+    "eta_seconds": "{{s}}s",
+    "eta_minutes": "{{m}}m {{s}}s"
+  },
+  "updates": {
+    "title": "Mises à jour",
+    "kicker": "JOURNAL DES VERSIONS",
+    "intro": "Retrouvez les dernières évolutions du launcher et du projet.",
+    "latest": "DERNIÈRE VERSION",
+    "loading": "Chargement des patchnotes...",
+    "no_entries": "Aucune note de mise à jour trouvée.",
+    "offline_message": "Vous êtes hors-ligne, et il a été impossible de récupérer les données des patchnotes sur le serveur. Veuillez vérifier votre connexion Internet.",
+    "entry": {
+      "title": "Version 0.0.1 – Alpha",
+      "date": "Patch-note - Janvier 2026",
+      "text": "Première version jouable"
+    }
+  },
+  "news": {
+    "title": "INFOS EN VRAC",
+    "alpha_title": "⚠️Pour les alpha-testeurs !",
+    "alpha_text": "Ceci est une version alpha <strong> privée</strong> du jeu. Merci de ne pas la partager avec quiconque en dehors de l'équipe de développement.",
+    "screenshot_title": "N'hésitez pas à screen le jeu !",
+    "screenshot_text": "Si l'envie vous prend de lancer un record du jeu, ou de simplement faire un screenshot d'un moment précis, n'hésitez surtout pas à le partager avec la commu dans le canal <span class=\"channel-tag\">📸・Media-only</span> du Discord !",
+    "bugs_title": "Les rapports de bugs",
+    "bugs_text": "Pour reporter un bug, que ce soit au niveau des graphismes, des interfaces, d'un comportement en jeu ou d'un crash, merci de les envoyer dans le canal <span class=\"channel-tag\">🪲・Report-bug</span> du Discord. Veillez à être le plus précis possible dans votre rapport, merci !",
+    "contribute_title": "Comment contribuer au projet ?",
+    "contribute_text": "Si le jeu venait à vous plaire et que vous souhaitez apporter votre contribution d'une manière ou d'une autre, sachez que c'est tout à fait possible pour vous ! Les candidatures sont constamment ouvertes, mais ATTENTION, chaque contributeur est bénévole. Vous serez bien évidemment mis en avant avec les crédits en jeu, sur le site et des rôles spéciaux sur le Discord. Pour ouvrir un ticket, ça se passe dans le canal <span class=\"channel-tag\">🎫・Ticket-question</span>."
+  },
+  "infos": {
+    "title": "Informations",
+    "kicker": "DOSSIER PROJET",
+    "intro": "Tout ce qu'il faut savoir sur Pokémon Stalactite, son état de développement et sa communauté.",
+    "phase": "ALPHA PRIVÉE",
+    "game_title": "LE JEU",
+    "status_title": "STATUT",
+    "progress_title": "AVANCEMENT",
+    "links_title": "LIENS UTILES",
+    "labels": { "phase": "PHASE", "engine": "MOTEUR", "tool": "OUTIL", "author": "AUTEUR", "license": "LICENCE" },
+    "progress": { "world": "Carte du monde", "story": "Scénario principal", "pokedex": "Pokédex régional", "audio": "Musiques & SFX" },
+    "progress_note": "Estimations mises à jour en août 2026.",
+    "links": { "website": "Site officiel", "discord": "Serveur Discord", "discord_sub": "Rejoindre la communauté", "credits": "Crédits complets", "credits_sub": "Voir tous les contributeurs" },
+    "description": {
+      "p": "Pokémon Stalactite est un fangame francophone développé bénévolement avec <strong>PSDK</strong> et <strong>Pokémon Studio</strong>."
+    },
+    "features": {
+      "title": "Caractéristiques principales",
+      "items": {
+        "1": "Région inédite semi-enneigée",
+        "2": "Scénario original mature",
+        "3": "Pokémon régionaux exclusifs",
+        "4": "Difficulté progressive"
+      }
+    },
+    "state": {
+      "title": "État du projet",
+      "description": "Le jeu est actuellement en <strong>phase Alpha</strong>. Des bugs, crashes ou déséquilibres peuvent survenir."
+    },
+    "meta": {
+      "developer": "Développé par <strong>Yusiki</strong>",
+      "license": "Projet non commercial et non affilié."
+    }
+  },
+  "errors": {
+    "extracting": "Erreur lors de l'extraction.",
+    "download": "Erreur lors du téléchargement.",
+    "launch_crash": "Le jeu s'est arrêté brutalement.",
+    "game_missing": "Game.exe introuvable !"
+  },
+  "alert": {
+    "download_prefix": "Erreur de téléchargement :",
+    "not_installed_folder": "Le jeu n'est pas installé : impossible d'ouvrir le dossier.",
+    "not_installed_uninstall": "Le jeu n'est pas installé : rien à désinstaller.",
+    "confirm_uninstall": "Cela va supprimer tous les fichiers du jeu. Continuer ?",
+    "uninstall_error": "Une erreur est survenue lors de la désinstallation."
+  },
+  "settings": {
+    "title": "Paramètres",
+    "kicker": "PRÉFÉRENCES",
+    "intro": "Personnalisez l’affichage et la langue du launcher.",
+    "reduced_motion": { "label": "Animations réduites", "description": "Réduire les animations et masquer la neige.", "enabled": "Activé", "disabled": "Désactivé" },
+    "language": {
+      "label": "Langage",
+      "fr_label": "Français",
+      "en_label": "English",
+      "es_label": "Español"
+    },
+    "restart_notice": "Certains paramètres nécessitent un redémarrage du launcher.",
+    "snow": {
+      "label": "Effet neige",
+      "description": "Afficher ou masquer les flocons animés dans le launcher.",
+      "enabled": "Activé",
+      "disabled": "Désactivé"
+    }
+  },
+  "credits": {
+    "title": "Crédits",
+    "kicker": "ÉQUIPE DU PROJET",
+    "intro": "Les personnes qui donnent vie à Pokémon Stalactite.",
+    "lead": {
+      "title": "Lead",
+      "names": "Yusiki"
+    },
+    "contributors": {
+      "title": "Contributeurs / Supporters",
+      "names": [
+        "Kit",
+        "Flo",
+        "Maytarri",
+        "Flolo",
+        "Nastimz",
+        "Jellal_F",
+        "Revali",
+        "Halpharox",
+        "Mathieu",
+        "Dracoyan",
+        "CosmoBlock",
+        "Carnavaliaa",
+        "eysselia",
+        "ArthurOufGuedin",
+        "The Cool Artist",
+        "Girasol",
+        "Ayfoth",
+        "Eurons",
+        "Wujek",
+        "Noé",
+        "Dashibura",
+        "SpikeXsqual",
+        "Tyfloflo",
+        "Kazzyx",
+        "Alessio",
+        "Dark Rider"
+      ]
+    },
+    "thanks": {
+      "title": "Remerciements",
+      "text": "Merci à tous ceux qui ont participé au projet, et à tout le support de la communauté de Pokémon Workshop !"
+    },
+    "full": {
+      "title": "Crédits complets",
+      "text": "<a href=\"https://pokemon-stalactite.fr/credits\" target=\"_blank\" data-external=\"true\" style=\"color: #00d4ff; text-decoration: underline;\">https://pokemon-stalactite.fr/credits</a>"
+    }
+  }
+}
